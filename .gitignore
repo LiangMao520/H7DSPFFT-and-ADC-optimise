@@ -1,0 +1,48 @@
+# VS Code 本地配置、扩展日志和锁文件（包括各级子目录）
+.vscode/
+*.code-workspace
+
+# Keil 个人界面状态；uvoptx 含调试器及 Flash 下载配置，必须保留
+/MDK-ARM/**/*.uvguix.*
+
+# Keil / ARM 编译输出和中间文件；递归覆盖实际的同名输出目录
+# 不整目录忽略 Objects、Listings 或同名输出目录，避免误排除源码与 Scatter
+/MDK-ARM/**/*.o
+/MDK-ARM/**/*.d
+/MDK-ARM/**/*.crf
+/MDK-ARM/**/*.dep
+/MDK-ARM/**/*.lnp
+/MDK-ARM/**/*.axf
+/MDK-ARM/**/*.hex
+/MDK-ARM/**/*.bin
+/MDK-ARM/**/*.map
+/MDK-ARM/**/*.lst
+
+# Keil 编译日志、链接报告、调试缓存及自动生成的空事件描述
+/MDK-ARM/**/*.log
+/MDK-ARM/**/*.build_log.htm
+/MDK-ARM/H7DSPFFT and ADC optimise/H7DSPFFT and ADC optimise.htm
+/MDK-ARM/**/ExtDll.iex
+/MDK-ARM/EventRecorderStub.scvd
+
+# 通用临时 / 备份文件
+*.tmp
+*.bak
+*~
+
+# 明确保留 CubeMX、Keil 工程、启动/链接配置和调试配置
+!*.ioc
+!.mxproject
+!*.uvprojx
+!*.uvoptx
+!*.s
+!*.S
+!*.sct
+!*.ld
+!*.icf
+!*.dbgconf
+
+# Core、Drivers、Middlewares、第三方源码及 .lib/.a 库默认保留
+# MDK-ARM/RTE（含 RTE_Components.h）和 DebugConfig 默认保留
+# 当前外部环境依赖：Arm Compiler 6.22、Keil.STM32H7xx_DFP 4.1.3、
+# ARM.CMSIS 6.1.0、ARM.CMSIS-DSP 1.15.0；git clone 不会安装这些工具/Pack
